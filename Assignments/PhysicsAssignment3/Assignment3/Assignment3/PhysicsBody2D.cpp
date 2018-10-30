@@ -1,23 +1,16 @@
 #include <stdio.h>
-#include "Vec3.h"
-#include "Body.h"
+#include "PhysicsBody2D.h"
+#include "Vector.h"
+
 
 //Default constructor.
-Body::Body() {
-	mass = 1;
-	angle = 0;
-	position = velocity = acceleration = Vec3();
-}
+PhysicsBody2D::PhysicsBody2D() : PhysicsBody2D( 1.0f ) {}
 
 //Simple _mass constructor
-Body::Body(float _mass) {
-	mass = _mass;
-	angle = 0;
-	position = velocity = acceleration = Vec3();
-}
+PhysicsBody2D::PhysicsBody2D(float mass_) : PhysicsBody2D(mass_, 0, Vec2(), Vec2(), Vec2()) { }
 
 //Advanced constructor to set all variables of the Body.
-Body::Body(float _mass, float _angle, Vec3 _position, Vec3 _velocity, Vec3 _acceleration) {
+PhysicsBody2D::PhysicsBody2D(float _mass, float _angle, Vec2 _position, Vec2 _velocity, Vec2 _acceleration) {
 	mass = _mass;
 	angle = _angle;
 	position = _position;
@@ -26,10 +19,10 @@ Body::Body(float _mass, float _angle, Vec3 _position, Vec3 _velocity, Vec3 _acce
 }
 
 //Destructor
-Body::~Body() {/*Stub*/}
+PhysicsBody2D::~PhysicsBody2D() {/*Stub*/}
 
 //Update the status of the body by the timeStep interval.
-void Body::Update(float timeStep) {
+void PhysicsBody2D::Update(float timeStep) {
 
 	//Get the new position of the body via:
 	//p = p + (v * timeStep) + (a * 0.5 * (timeStep * timeStep));
@@ -43,8 +36,8 @@ void Body::Update(float timeStep) {
 }
 
 //Apply a force to the body.
-void Body::ApplyForce(Vec3 force) {
-	
+void PhysicsBody2D::ApplyForce(Vec2 force) {
+
 	//Find acceleration of the body given the force applied.
 	//Thanks, Newton!
 	//f = m*a

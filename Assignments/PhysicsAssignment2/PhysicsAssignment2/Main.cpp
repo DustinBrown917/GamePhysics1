@@ -70,6 +70,7 @@ int main(int argc, const char* argv[]) {
 		else if (tick >= 10.0f) { force.x = -625.0f; }
 		else if (tick >= 5.5f) { force.x = 0.0f; }
 
+
 		//Apply force and update the body.
 		ricoRodriguez.ApplyForce(force);
 		ricoRodriguez.Update(timeSinceLastFrame);
