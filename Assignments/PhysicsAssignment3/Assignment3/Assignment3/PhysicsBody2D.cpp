@@ -16,6 +16,7 @@ PhysicsBody2D::PhysicsBody2D(float _mass, float _angle, Vec2 _position, Vec2 _ve
 	position = _position;
 	velocity = _velocity;
 	acceleration = _acceleration;
+	gravityScale = 1.0f;
 }
 
 //Destructor
@@ -41,5 +42,6 @@ void PhysicsBody2D::ApplyForce(Vec2 force) {
 	//Find acceleration of the body given the force applied.
 	//Thanks, Newton!
 	//f = m*a
+	
 	acceleration = force / mass;
 }

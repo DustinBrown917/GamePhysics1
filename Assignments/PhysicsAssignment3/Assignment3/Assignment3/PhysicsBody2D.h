@@ -6,6 +6,7 @@
 class PhysicsBody2D
 {
 public: //Member variables
+	bool gravityScale;
 	float mass, angle;
 	Vec2 position, velocity, acceleration;
 

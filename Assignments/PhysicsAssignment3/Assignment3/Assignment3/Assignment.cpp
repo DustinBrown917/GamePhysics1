@@ -17,7 +17,7 @@ Assignment::~Assignment()
 {
 }
 
-void Assignment::AddTwoBodies(PhysicsBody2D * body1, PhysicsBody2D * body2)
+void Assignment::AddTwoBodies(PhysicsBody2D* body1, PhysicsBody2D* body2)
 {
 	bodies[0] = body1;
 	bodies[1] = body2;

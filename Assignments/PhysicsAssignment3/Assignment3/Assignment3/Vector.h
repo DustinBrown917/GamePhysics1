@@ -18,21 +18,24 @@
 struct Vec2 {
 	float x, y;
 
+	//Default constructor
 	inline Vec2() : Vec2(0.0f){ }
-
+	//Unit constructor
 	inline Vec2(float val) : Vec2(val,val) { }
-
+	//Two argument constructor
 	inline Vec2(float x_, float y_) {
 		x = x_;
 		y = y_;
 	}
 
-	inline ~Vec2(){}
+	//Destrucgtor
+	inline ~Vec2(){/*Stub*/}
 
 	/*********************************************************************************************************/
 	/*********************************************** OPERATORS ***********************************************/
 	/*********************************************************************************************************/
 
+	//Assignment
 	inline Vec2& operator = (const Vec2& v) {
 		x = v.x;
 		y = v.y;
@@ -103,8 +106,10 @@ struct Vec2 {
 	/********************************************* MEMBER METHODS ********************************************/
 	/*********************************************************************************************************/
 
+	//Converts the vector into a string.
 	std::string ToString() const;
 
+	//Rotate the vector
 	inline static Vec2 Rotate(Vec2 vec, float theta) {
 		theta *= DEGREE_TO_RADIAN; //degree to radian conversion factor.
 		float tempx = (vec.x * cos(theta)) - (vec.y * sin(theta));
@@ -114,22 +119,27 @@ struct Vec2 {
 		return vec;
 	}
 
+	//Get the magnitude of the vector
 	inline float Mag() const {
 		return sqrt((x * x) + (y * y));
 	}
 
+	//Gets the normal of this vector
 	inline static Vec2 GetNormal(const Vec2& vec) {
 		return (vec / vec.Mag());
 	}
 
+	//Convert this vector to  1 unit vector.
 	inline void Normalize() {
 		*this /= this->Mag();
 	}
 
+	//Get the dot product of a vector.
 	inline static float Dot(const Vec2& v1, const Vec2& v2) {
 		return (v1.x * v2.x) + (v1.y * v2.y);
 	}
 
+	//Get a vector at postion t between v1 and v2, where v1 is at t=0 and v2 is at t=1
 	inline static Vec2 Lerp(const Vec2& v1, const Vec2& v2, float t) {
 		return ((v2 - v1) * t) + v1;
 	}
@@ -141,6 +151,7 @@ struct Vec2 {
 //Vec3 Class Header
 struct Vec3 {
 
+	//Static axes in preparation for dynamic rotation. (not yet implemented)
 	struct Axis {
 		static const Vec3 x;
 		static const Vec3 y;
